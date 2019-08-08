@@ -1,0 +1,10 @@
+C:\DEV\Transporter\Transporter\bin\Debug\Transporter.exe.config
+C:\DEV\Transporter\Transporter\bin\Debug\Transporter.exe
+C:\DEV\Transporter\Transporter\bin\Debug\Transporter.pdb
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.csprojAssemblyReference.cache
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.Transporter.resources
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.Properties.Resources.resources
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.csproj.GenerateResource.cache
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.exe
+C:\DEV\Transporter\Transporter\obj\Debug\Transporter.pdb
