@@ -39,7 +39,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(124, 245);
+            this.btnStart.Location = new System.Drawing.Point(117, 372);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(266, 245);
+            this.btnStop.Location = new System.Drawing.Point(259, 372);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 0;
@@ -64,6 +64,7 @@
             this.btnAddDiir.TabIndex = 0;
             this.btnAddDiir.Text = "Add";
             this.btnAddDiir.UseVisualStyleBackColor = true;
+            this.btnAddDiir.Click += new System.EventHandler(this.BtnAddDiir_Click);
             // 
             // btnAddFormatAndDir
             // 
@@ -73,31 +74,32 @@
             this.btnAddFormatAndDir.TabIndex = 0;
             this.btnAddFormatAndDir.Text = "Add";
             this.btnAddFormatAndDir.UseVisualStyleBackColor = true;
+            this.btnAddFormatAndDir.Click += new System.EventHandler(this.BtnAddFormatAndDir_Click);
             // 
             // tbDir
             // 
             this.tbDir.Location = new System.Drawing.Point(34, 32);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(346, 20);
+            this.tbDir.Size = new System.Drawing.Size(346, 22);
             this.tbDir.TabIndex = 1;
             // 
             // tbFormat
             // 
             this.tbFormat.Location = new System.Drawing.Point(34, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(66, 20);
+            this.tbFormat.Size = new System.Drawing.Size(66, 22);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
             this.tbFormatDir.Location = new System.Drawing.Point(117, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(263, 20);
+            this.tbFormatDir.Size = new System.Drawing.Size(263, 22);
             this.tbFormatDir.TabIndex = 1;
             // 
             // Transporter
             // 
-            this.ClientSize = new System.Drawing.Size(515, 280);
+            this.ClientSize = new System.Drawing.Size(515, 407);
             this.Controls.Add(this.tbFormatDir);
             this.Controls.Add(this.tbFormat);
             this.Controls.Add(this.tbDir);
@@ -119,9 +121,9 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnAddDiir;
         private System.Windows.Forms.Button btnAddFormatAndDir;
-        public System.Windows.Forms.TextBox tbDir;
-        public System.Windows.Forms.TextBox tbFormat;
-        public System.Windows.Forms.TextBox tbFormatDir;
+        private System.Windows.Forms.TextBox tbDir;
+        private System.Windows.Forms.TextBox tbFormat;
+        private System.Windows.Forms.TextBox tbFormatDir;
     }
 }
 

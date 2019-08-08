@@ -8,3 +8,13 @@ C:\DEV\Transporter\Transporter\obj\Debug\Transporter.csproj.GenerateResource.cac
 C:\DEV\Transporter\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
 C:\DEV\Transporter\Transporter\obj\Debug\Transporter.exe
 C:\DEV\Transporter\Transporter\obj\Debug\Transporter.pdb
+C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe.config
+C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe
+C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\Transporter.pdb
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.csprojAssemblyReference.cache
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.Transporter.resources
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.Properties.Resources.resources
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.GenerateResource.cache
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.exe
+C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.pdb

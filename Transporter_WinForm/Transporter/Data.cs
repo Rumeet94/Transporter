@@ -16,6 +16,9 @@ namespace Transporter
 
         public static void Add(string format, string path)
         {
+            if (format == null)
+                format = "dev";
+
             if (!formatAndPath.ContainsKey(format))
                 formatAndPath.Add(format, path);
             else

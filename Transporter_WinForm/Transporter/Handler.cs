@@ -9,9 +9,9 @@ namespace Transporter
 {
     class Handler
     {
-        public static void DoAdd(string comand)
+        public static void DoAdd(string format,string path)
         {
-            Data.Add(comand);
+            Data.Add(format, path);
         }
 
         public static void DoDel(string comand)
