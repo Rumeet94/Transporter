@@ -17,7 +17,7 @@ namespace Transporter
         public static void Add(string format, string path)
         {
             if (format == null)
-                format = "dev";
+                format = "dir";
 
             if (!formatAndPath.ContainsKey(format))
                 formatAndPath.Add(format, path);
@@ -27,12 +27,13 @@ namespace Transporter
                 formatAndPath.Add(format, path);
             }
         }
-
+        /*
         public static void Delete(string comand)
         {
             string[] tmp = comand.Split(' ');
             formatAndPath.Remove(tmp[1]);
         }
+        */
 
     }
 }

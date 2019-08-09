@@ -35,6 +35,7 @@
             this.tbDir = new System.Windows.Forms.TextBox();
             this.tbFormat = new System.Windows.Forms.TextBox();
             this.tbFormatDir = new System.Windows.Forms.TextBox();
+            this.lblAddFormAndPath = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -80,26 +81,36 @@
             // 
             this.tbDir.Location = new System.Drawing.Point(34, 32);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(346, 22);
+            this.tbDir.Size = new System.Drawing.Size(346, 20);
             this.tbDir.TabIndex = 1;
             // 
             // tbFormat
             // 
             this.tbFormat.Location = new System.Drawing.Point(34, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(66, 22);
+            this.tbFormat.Size = new System.Drawing.Size(66, 20);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
             this.tbFormatDir.Location = new System.Drawing.Point(117, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(263, 22);
+            this.tbFormatDir.Size = new System.Drawing.Size(263, 20);
             this.tbFormatDir.TabIndex = 1;
+            // 
+            // lblAddFormAndPath
+            // 
+            this.lblAddFormAndPath.AutoSize = true;
+            this.lblAddFormAndPath.Location = new System.Drawing.Point(50, 125);
+            this.lblAddFormAndPath.Name = "lblAddFormAndPath";
+            this.lblAddFormAndPath.Size = new System.Drawing.Size(13, 13);
+            this.lblAddFormAndPath.TabIndex = 2;
+            this.lblAddFormAndPath.Text = "1";
             // 
             // Transporter
             // 
             this.ClientSize = new System.Drawing.Size(515, 407);
+            this.Controls.Add(this.lblAddFormAndPath);
             this.Controls.Add(this.tbFormatDir);
             this.Controls.Add(this.tbFormat);
             this.Controls.Add(this.tbDir);
@@ -109,6 +120,7 @@
             this.Controls.Add(this.btnStart);
             this.Name = "Transporter";
             this.Text = "Transporter";
+            this.Load += new System.EventHandler(this.Transporter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +136,7 @@
         private System.Windows.Forms.TextBox tbDir;
         private System.Windows.Forms.TextBox tbFormat;
         private System.Windows.Forms.TextBox tbFormatDir;
+        private System.Windows.Forms.Label lblAddFormAndPath;
     }
 }
 

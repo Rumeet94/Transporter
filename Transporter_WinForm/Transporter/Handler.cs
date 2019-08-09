@@ -9,16 +9,21 @@ namespace Transporter
 {
     class Handler
     {
+        private static bool isStart = false;
+        public static bool IsStart
+        {
+            get
+        }
         public static void DoAdd(string format,string path)
         {
             Data.Add(format, path);
         }
-
+        /*
         public static void DoDel(string comand)
         {
             Data.Delete(comand);
         }
-
+        */
         public static void DoHelp()
         {
             Console.WriteLine("======================================================================================================");
@@ -33,6 +38,7 @@ namespace Transporter
 
         public static void DoStart()
         {
+            isStart = true;
             try
             {
                 while (true)
@@ -49,7 +55,6 @@ namespace Transporter
                                     if (fileInf.Extension.Contains(format.Key) && !format.Key.Equals("dir"))
                                     {
                                         fileInf.MoveTo(format.Value + @"\" + DateTime.Now.ToString("yyyyMMdd_hhmmss_") + fileInf.Name);
-                                        Console.WriteLine("Файл {0} перенесен", fileInf.Name);
                                     }
                                 }
                         }

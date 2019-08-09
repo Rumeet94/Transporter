@@ -18,3 +18,13 @@ C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.Generat
 C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
 C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.exe
 C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Transporter.pdb
+C:\GIT\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe.config
+C:\GIT\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe
+C:\GIT\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.pdb
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csprojAssemblyReference.cache
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.Transporter.resources
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.Properties.Resources.resources
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.GenerateResource.cache
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.exe
+C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.pdb
