@@ -56,6 +56,7 @@
             this.btnStop.TabIndex = 0;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // btnAddDiir
             // 
@@ -81,21 +82,22 @@
             // 
             this.tbDir.Location = new System.Drawing.Point(34, 32);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(346, 20);
+            this.tbDir.Size = new System.Drawing.Size(346, 22);
             this.tbDir.TabIndex = 1;
+            this.tbDir.TextChanged += new System.EventHandler(this.TbDir_TextChanged);
             // 
             // tbFormat
             // 
             this.tbFormat.Location = new System.Drawing.Point(34, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(66, 20);
+            this.tbFormat.Size = new System.Drawing.Size(66, 22);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
             this.tbFormatDir.Location = new System.Drawing.Point(117, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(263, 20);
+            this.tbFormatDir.Size = new System.Drawing.Size(263, 22);
             this.tbFormatDir.TabIndex = 1;
             // 
             // lblAddFormAndPath
@@ -103,7 +105,7 @@
             this.lblAddFormAndPath.AutoSize = true;
             this.lblAddFormAndPath.Location = new System.Drawing.Point(50, 125);
             this.lblAddFormAndPath.Name = "lblAddFormAndPath";
-            this.lblAddFormAndPath.Size = new System.Drawing.Size(13, 13);
+            this.lblAddFormAndPath.Size = new System.Drawing.Size(16, 17);
             this.lblAddFormAndPath.TabIndex = 2;
             this.lblAddFormAndPath.Text = "1";
             // 

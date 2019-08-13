@@ -9,11 +9,6 @@ namespace Transporter
 {
     class Handler
     {
-        private static bool isStart = false;
-        public static bool IsStart
-        {
-            get
-        }
         public static void DoAdd(string format,string path)
         {
             Data.Add(format, path);
@@ -38,18 +33,18 @@ namespace Transporter
 
         public static void DoStart()
         {
-            isStart = true;
+            
             try
             {
-                while (true)
+                while (Data.IsStart)
                 {
                     try
                     {
-                        List<string> filesname = Directory.GetFiles(Data.formatAndPath["dir"]).ToList<string>();
+                        List<string> filesname = Directory.GetFiles(Data.FormatAndPath["dir"]).ToList<string>();
                         foreach (string file in filesname)
                         {
                             if (File.Exists(file))
-                                foreach (KeyValuePair<string, string> format in Data.formatAndPath)
+                                foreach (KeyValuePair<string, string> format in Data.FormatAndPath)
                                 {
                                     FileInfo fileInf = new FileInfo(file);
                                     if (fileInf.Extension.Contains(format.Key) && !format.Key.Equals("dir"))
@@ -70,17 +65,17 @@ namespace Transporter
         {
             try
             {
-                Console.WriteLine("Перенос файлов из дирректории {0}", Data.formatAndPath["dir"]);
+                Console.WriteLine("Перенос файлов из дирректории {0}", Data.FormatAndPath["dir"]);
             }
             catch
             {
                 Console.WriteLine("Исходная дирректория не указана.");
             }
 
-            if (Data.formatAndPath.Values.ToList<string>().Count > 1)
+            if (Data.FormatAndPath.Values.ToList<string>().Count > 1)
             {
                 Console.WriteLine("Перенос файлов в директории по форматам:");
-                foreach (KeyValuePair<string, string> x in Data.formatAndPath)
+                foreach (KeyValuePair<string, string> x in Data.FormatAndPath)
                 {
                     if (!x.Key.Equals("dir"))
                         Console.WriteLine("    {0} {1}", x.Key, x.Value);

@@ -8,10 +8,16 @@ namespace Transporter
 {
     class Data
     {
-        public static readonly Dictionary<string, string> formatAndPath = new Dictionary<string, string>();
-        public Dictionary<string, string> FormatAndPath
+        private static readonly Dictionary<string, string> formatAndPath = new Dictionary<string, string>();
+        public static Dictionary<string, string> FormatAndPath
         {
             get { return formatAndPath; }
+        }
+        private static bool isStart = false;
+        public static bool IsStart
+        {
+            get { return isStart; }
+            set { isStart = value; }
         }
 
         public static void Add(string format, string path)
