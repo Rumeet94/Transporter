@@ -13,7 +13,13 @@ namespace Transporter
         public Transporter()
         {
             InitializeComponent();
-            
+
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("Для начала работы укажите;");
+            builder.AppendLine("1) исходный каталог - откуда бы Вы хотели перенести файлы;");
+            builder.AppendLine("2) форматы файлов с каталами - куда бы Вы xотели переместить файлы.");
+
+            tbMessage.Text = builder.ToString();
         }
 
         private void BtnAddDiir_Click(object sender, System.EventArgs e)
@@ -35,13 +41,17 @@ namespace Transporter
 
         private void BtnStop_Click(object sender, System.EventArgs e)
         {
+            tbMessage.Text = "Перенос файлов остановлен.";
             cancellationTokenSource?.Cancel();
+            
             tbDir.ReadOnly = false;
             tbFormat.ReadOnly = false;
             tbFormatDir.ReadOnly = false;
+
             btnStart.Enabled = true;
             btnAddDiir.Enabled = true;
             btnAddFormatAndDir.Enabled = true;
+            btnResPar.Enabled = true;
         }
 
         private void BtnStart_Click(object sender, System.EventArgs e)
@@ -49,10 +59,15 @@ namespace Transporter
             tbDir.ReadOnly = true;
             tbFormat.ReadOnly = true;
             tbFormatDir.ReadOnly = true;
+
             btnStart.Enabled = false;
             btnAddDiir.Enabled = false;
             btnAddFormatAndDir.Enabled = false;
+            btnResPar.Enabled = false;
+            
             cancellationTokenSource = new CancellationTokenSource();
+
+            tbMessage.Text = "Выполняется перенос файлов";
             Task.Run(() => Handler.MoveFiles(cancellationTokenSource.Token));
         }
 
@@ -63,14 +78,17 @@ namespace Transporter
 
         private void BtnViewPar_Click(object sender, System.EventArgs e)
         {
-            StringBuilder builder = new StringBuilder(Handler.CreateMessage("Форматы файлов и каталоги, куда файлы будут перенесены" + "\n"));
+            tbMessage.Text = Handler.GetParameters();
+        }
 
-            foreach(var format in Data.Formats)
-            {
-                builder.Append(string.Format("{0} : {1}", format.Key, format.Value) + "\n");
-            }
+        private void BtnResPar_Click(object sender, System.EventArgs e)
+        {
+            Handler.DelAllFormats(Data.Formats);
+        }
 
-            tbMessage.Text = builder.ToString();
+        private void BtnClearCon_Click(object sender, System.EventArgs e)
+        {
+            tbMessage.Text = "";
         }
     }
 }

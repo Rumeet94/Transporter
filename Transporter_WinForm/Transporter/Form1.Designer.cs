@@ -85,7 +85,7 @@
             // 
             this.tbDir.Location = new System.Drawing.Point(12, 37);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(391, 20);
+            this.tbDir.Size = new System.Drawing.Size(391, 22);
             this.tbDir.TabIndex = 1;
             this.tbDir.TextChanged += new System.EventHandler(this.TbDir_TextChanged);
             // 
@@ -93,14 +93,14 @@
             // 
             this.tbFormat.Location = new System.Drawing.Point(12, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(75, 20);
+            this.tbFormat.Size = new System.Drawing.Size(75, 22);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
             this.tbFormatDir.Location = new System.Drawing.Point(109, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(294, 20);
+            this.tbFormatDir.Size = new System.Drawing.Size(294, 22);
             this.tbFormatDir.TabIndex = 1;
             // 
             // tbMessage
@@ -120,6 +120,7 @@
             this.btnClearCon.TabIndex = 4;
             this.btnClearCon.Text = "Clear console";
             this.btnClearCon.UseVisualStyleBackColor = true;
+            this.btnClearCon.Click += new System.EventHandler(this.BtnClearCon_Click);
             // 
             // btnResPar
             // 
@@ -129,6 +130,7 @@
             this.btnResPar.TabIndex = 4;
             this.btnResPar.Text = "Reset parameters";
             this.btnResPar.UseVisualStyleBackColor = true;
+            this.btnResPar.Click += new System.EventHandler(this.BtnResPar_Click);
             // 
             // btnViewPar
             // 
