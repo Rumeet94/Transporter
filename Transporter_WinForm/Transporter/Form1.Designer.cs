@@ -35,14 +35,17 @@
             this.tbDir = new System.Windows.Forms.TextBox();
             this.tbFormat = new System.Windows.Forms.TextBox();
             this.tbFormatDir = new System.Windows.Forms.TextBox();
-            this.lblAddFormAndPath = new System.Windows.Forms.Label();
+            this.tbMessage = new System.Windows.Forms.TextBox();
+            this.btnClearCon = new System.Windows.Forms.Button();
+            this.btnResPar = new System.Windows.Forms.Button();
+            this.btnViewPar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(117, 372);
+            this.btnStart.Location = new System.Drawing.Point(15, 372);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(75, 29);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -50,9 +53,9 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(259, 372);
+            this.btnStop.Location = new System.Drawing.Point(96, 372);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.Size = new System.Drawing.Size(75, 29);
             this.btnStop.TabIndex = 0;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -60,9 +63,9 @@
             // 
             // btnAddDiir
             // 
-            this.btnAddDiir.Location = new System.Drawing.Point(403, 30);
+            this.btnAddDiir.Location = new System.Drawing.Point(428, 32);
             this.btnAddDiir.Name = "btnAddDiir";
-            this.btnAddDiir.Size = new System.Drawing.Size(75, 23);
+            this.btnAddDiir.Size = new System.Drawing.Size(75, 29);
             this.btnAddDiir.TabIndex = 0;
             this.btnAddDiir.Text = "Add";
             this.btnAddDiir.UseVisualStyleBackColor = true;
@@ -70,9 +73,9 @@
             // 
             // btnAddFormatAndDir
             // 
-            this.btnAddFormatAndDir.Location = new System.Drawing.Point(403, 91);
+            this.btnAddFormatAndDir.Location = new System.Drawing.Point(428, 88);
             this.btnAddFormatAndDir.Name = "btnAddFormatAndDir";
-            this.btnAddFormatAndDir.Size = new System.Drawing.Size(75, 23);
+            this.btnAddFormatAndDir.Size = new System.Drawing.Size(75, 29);
             this.btnAddFormatAndDir.TabIndex = 0;
             this.btnAddFormatAndDir.Text = "Add";
             this.btnAddFormatAndDir.UseVisualStyleBackColor = true;
@@ -80,39 +83,70 @@
             // 
             // tbDir
             // 
-            this.tbDir.Location = new System.Drawing.Point(34, 32);
+            this.tbDir.Location = new System.Drawing.Point(12, 37);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(346, 22);
+            this.tbDir.Size = new System.Drawing.Size(391, 20);
             this.tbDir.TabIndex = 1;
             this.tbDir.TextChanged += new System.EventHandler(this.TbDir_TextChanged);
             // 
             // tbFormat
             // 
-            this.tbFormat.Location = new System.Drawing.Point(34, 93);
+            this.tbFormat.Location = new System.Drawing.Point(12, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(66, 22);
+            this.tbFormat.Size = new System.Drawing.Size(75, 20);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
-            this.tbFormatDir.Location = new System.Drawing.Point(117, 93);
+            this.tbFormatDir.Location = new System.Drawing.Point(109, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(263, 22);
+            this.tbFormatDir.Size = new System.Drawing.Size(294, 20);
             this.tbFormatDir.TabIndex = 1;
             // 
-            // lblAddFormAndPath
+            // tbMessage
             // 
-            this.lblAddFormAndPath.AutoSize = true;
-            this.lblAddFormAndPath.Location = new System.Drawing.Point(50, 125);
-            this.lblAddFormAndPath.Name = "lblAddFormAndPath";
-            this.lblAddFormAndPath.Size = new System.Drawing.Size(16, 17);
-            this.lblAddFormAndPath.TabIndex = 2;
-            this.lblAddFormAndPath.Text = "1";
+            this.tbMessage.Location = new System.Drawing.Point(12, 141);
+            this.tbMessage.Multiline = true;
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.ReadOnly = true;
+            this.tbMessage.Size = new System.Drawing.Size(491, 225);
+            this.tbMessage.TabIndex = 3;
+            // 
+            // btnClearCon
+            // 
+            this.btnClearCon.Location = new System.Drawing.Point(403, 372);
+            this.btnClearCon.Name = "btnClearCon";
+            this.btnClearCon.Size = new System.Drawing.Size(96, 29);
+            this.btnClearCon.TabIndex = 4;
+            this.btnClearCon.Text = "Clear console";
+            this.btnClearCon.UseVisualStyleBackColor = true;
+            // 
+            // btnResPar
+            // 
+            this.btnResPar.Location = new System.Drawing.Point(290, 372);
+            this.btnResPar.Name = "btnResPar";
+            this.btnResPar.Size = new System.Drawing.Size(107, 29);
+            this.btnResPar.TabIndex = 4;
+            this.btnResPar.Text = "Reset parameters";
+            this.btnResPar.UseVisualStyleBackColor = true;
+            // 
+            // btnViewPar
+            // 
+            this.btnViewPar.Location = new System.Drawing.Point(177, 372);
+            this.btnViewPar.Name = "btnViewPar";
+            this.btnViewPar.Size = new System.Drawing.Size(107, 29);
+            this.btnViewPar.TabIndex = 4;
+            this.btnViewPar.Text = "View parameters";
+            this.btnViewPar.UseVisualStyleBackColor = true;
+            this.btnViewPar.Click += new System.EventHandler(this.BtnViewPar_Click);
             // 
             // Transporter
             // 
             this.ClientSize = new System.Drawing.Size(515, 407);
-            this.Controls.Add(this.lblAddFormAndPath);
+            this.Controls.Add(this.btnViewPar);
+            this.Controls.Add(this.btnResPar);
+            this.Controls.Add(this.btnClearCon);
+            this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.tbFormatDir);
             this.Controls.Add(this.tbFormat);
             this.Controls.Add(this.tbDir);
@@ -138,7 +172,10 @@
         private System.Windows.Forms.TextBox tbDir;
         private System.Windows.Forms.TextBox tbFormat;
         private System.Windows.Forms.TextBox tbFormatDir;
-        private System.Windows.Forms.Label lblAddFormAndPath;
+        private System.Windows.Forms.TextBox tbMessage;
+        private System.Windows.Forms.Button btnClearCon;
+        private System.Windows.Forms.Button btnResPar;
+        private System.Windows.Forms.Button btnViewPar;
     }
 }
 

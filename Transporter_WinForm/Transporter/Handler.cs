@@ -2,90 +2,44 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Transporter
 {
     class Handler
     {
-        public static void DoAdd(string format,string path)
+        public static void AddFormat(string format,string path)
         {
             Data.Add(format, path);
         }
-        /*
-        public static void DoDel(string comand)
+
+        public static string CreateMessage(string message)
         {
-            Data.Delete(comand);
-        }
-        */
-        public static void DoHelp()
-        {
-            Console.WriteLine("======================================================================================================");
-            Console.WriteLine("Для начала работы Вам необходимо задать параметры:");
-            Console.WriteLine("1) Команда 'add dir <путь директории>' добавляет исходный каталог, откуда необходимо переносить файлы.");
-            Console.WriteLine("2) Команда 'add <разрешение файла> <путь директории>' добавляет разрешение файла и каталог, куда");
-            Console.WriteLine("  необходимо переносить файлы.");
-            Console.WriteLine("3) Команда 'status' отображает текущие параметры.");
-            Console.WriteLine("4) Команда 'start' запускает перенос файлов.");
-            Console.WriteLine("======================================================================================================");
+            return DateTime.Now.ToString("dd.MM.yy hh:mm:ss ") + message;
         }
 
-        public static void DoStart()
+        public static void MoveFiles(CancellationToken token)
         {
-            
-            try
+            while (!token.IsCancellationRequested)
             {
-                while (Data.IsStart)
+                try
                 {
-                    try
+                    var files = Directory.GetFiles(Data.Path);
+                    foreach (string file in files)
                     {
-                        List<string> filesname = Directory.GetFiles(Data.FormatAndPath["dir"]).ToList<string>();
-                        foreach (string file in filesname)
+                        foreach (var format in Data.Formats)
                         {
-                            if (File.Exists(file))
-                                foreach (KeyValuePair<string, string> format in Data.FormatAndPath)
-                                {
-                                    FileInfo fileInf = new FileInfo(file);
-                                    if (fileInf.Extension.Contains(format.Key) && !format.Key.Equals("dir"))
-                                    {
-                                        fileInf.MoveTo(format.Value + @"\" + DateTime.Now.ToString("yyyyMMdd_hhmmss_") + fileInf.Name);
-                                    }
-                                }
+                            var fileInfo = new FileInfo(file);
+                            if (fileInfo.Extension.Contains(format.Key))
+                            {
+                                fileInfo.MoveTo(format.Value + @"\" + DateTime.Now.ToString("yyyyMMdd_hhmmss_") + fileInfo.Name);
+                            }
                         }
                     }
-                    catch (IOException) { }
                 }
+                catch (IOException) { }
+                catch (KeyNotFoundException) { }
             }
-            catch (KeyNotFoundException) { Console.WriteLine("Не указаны необходимые параметры для запуска"); }
-
-        }
-
-        public static void DoStatus()
-        {
-            try
-            {
-                Console.WriteLine("Перенос файлов из дирректории {0}", Data.FormatAndPath["dir"]);
-            }
-            catch
-            {
-                Console.WriteLine("Исходная дирректория не указана.");
-            }
-
-            if (Data.FormatAndPath.Values.ToList<string>().Count > 1)
-            {
-                Console.WriteLine("Перенос файлов в директории по форматам:");
-                foreach (KeyValuePair<string, string> x in Data.FormatAndPath)
-                {
-                    if (!x.Key.Equals("dir"))
-                        Console.WriteLine("    {0} {1}", x.Key, x.Value);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Форматы файлов и каталоги для переноса не указаны");
-            }
-
         }
     }
 }

@@ -8,38 +8,28 @@ namespace Transporter
 {
     class Data
     {
-        private static readonly Dictionary<string, string> formatAndPath = new Dictionary<string, string>();
-        public static Dictionary<string, string> FormatAndPath
+        private static readonly Dictionary<string, string> formats = new Dictionary<string, string>();
+        public static Dictionary<string, string> Formats
         {
-            get { return formatAndPath; }
+            get { return formats; }
         }
-        private static bool isStart = false;
-        public static bool IsStart
+
+        private static string path = null;
+        public static string Path
         {
-            get { return isStart; }
-            set { isStart = value; }
+            get { return path; }
+            set { path = value; }
         }
 
         public static void Add(string format, string path)
         {
-            if (format == null)
-                format = "dir";
-
-            if (!formatAndPath.ContainsKey(format))
-                formatAndPath.Add(format, path);
+            if (!formats.ContainsKey(format))
+                formats.Add(format, path);
             else
             {
-                formatAndPath.Remove(format);
-                formatAndPath.Add(format, path);
+                formats.Remove(format);
+                formats.Add(format, path);
             }
         }
-        /*
-        public static void Delete(string comand)
-        {
-            string[] tmp = comand.Split(' ');
-            formatAndPath.Remove(tmp[1]);
-        }
-        */
-
     }
 }
