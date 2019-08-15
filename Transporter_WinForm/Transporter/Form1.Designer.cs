@@ -39,11 +39,14 @@
             this.btnClearCon = new System.Windows.Forms.Button();
             this.btnResPar = new System.Windows.Forms.Button();
             this.btnViewPar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(15, 372);
+            this.btnStart.Location = new System.Drawing.Point(12, 372);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 29);
             this.btnStart.TabIndex = 0;
@@ -53,7 +56,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(96, 372);
+            this.btnStop.Location = new System.Drawing.Point(93, 372);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 29);
             this.btnStop.TabIndex = 0;
@@ -63,7 +66,7 @@
             // 
             // btnAddDiir
             // 
-            this.btnAddDiir.Location = new System.Drawing.Point(428, 32);
+            this.btnAddDiir.Location = new System.Drawing.Point(485, 34);
             this.btnAddDiir.Name = "btnAddDiir";
             this.btnAddDiir.Size = new System.Drawing.Size(75, 29);
             this.btnAddDiir.TabIndex = 0;
@@ -73,7 +76,7 @@
             // 
             // btnAddFormatAndDir
             // 
-            this.btnAddFormatAndDir.Location = new System.Drawing.Point(428, 88);
+            this.btnAddFormatAndDir.Location = new System.Drawing.Point(485, 90);
             this.btnAddFormatAndDir.Name = "btnAddFormatAndDir";
             this.btnAddFormatAndDir.Size = new System.Drawing.Size(75, 29);
             this.btnAddFormatAndDir.TabIndex = 0;
@@ -85,7 +88,7 @@
             // 
             this.tbDir.Location = new System.Drawing.Point(12, 37);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(391, 22);
+            this.tbDir.Size = new System.Drawing.Size(467, 22);
             this.tbDir.TabIndex = 1;
             this.tbDir.TextChanged += new System.EventHandler(this.TbDir_TextChanged);
             // 
@@ -93,15 +96,16 @@
             // 
             this.tbFormat.Location = new System.Drawing.Point(12, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(75, 22);
+            this.tbFormat.Size = new System.Drawing.Size(108, 22);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
-            this.tbFormatDir.Location = new System.Drawing.Point(109, 93);
+            this.tbFormatDir.Location = new System.Drawing.Point(126, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(294, 22);
+            this.tbFormatDir.Size = new System.Drawing.Size(353, 22);
             this.tbFormatDir.TabIndex = 1;
+            this.tbFormatDir.TextChanged += new System.EventHandler(this.TbFormatDir_TextChanged);
             // 
             // tbMessage
             // 
@@ -109,14 +113,14 @@
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.ReadOnly = true;
-            this.tbMessage.Size = new System.Drawing.Size(491, 225);
+            this.tbMessage.Size = new System.Drawing.Size(548, 225);
             this.tbMessage.TabIndex = 3;
             // 
             // btnClearCon
             // 
-            this.btnClearCon.Location = new System.Drawing.Point(403, 372);
+            this.btnClearCon.Location = new System.Drawing.Point(448, 372);
             this.btnClearCon.Name = "btnClearCon";
-            this.btnClearCon.Size = new System.Drawing.Size(96, 29);
+            this.btnClearCon.Size = new System.Drawing.Size(112, 29);
             this.btnClearCon.TabIndex = 4;
             this.btnClearCon.Text = "Clear console";
             this.btnClearCon.UseVisualStyleBackColor = true;
@@ -124,27 +128,58 @@
             // 
             // btnResPar
             // 
-            this.btnResPar.Location = new System.Drawing.Point(290, 372);
+            this.btnResPar.Location = new System.Drawing.Point(209, 372);
             this.btnResPar.Name = "btnResPar";
-            this.btnResPar.Size = new System.Drawing.Size(107, 29);
+            this.btnResPar.Size = new System.Drawing.Size(115, 29);
             this.btnResPar.TabIndex = 4;
-            this.btnResPar.Text = "Reset parameters";
+            this.btnResPar.Text = "Reset settings";
             this.btnResPar.UseVisualStyleBackColor = true;
             this.btnResPar.Click += new System.EventHandler(this.BtnResPar_Click);
             // 
             // btnViewPar
             // 
-            this.btnViewPar.Location = new System.Drawing.Point(177, 372);
+            this.btnViewPar.Location = new System.Drawing.Point(330, 372);
             this.btnViewPar.Name = "btnViewPar";
-            this.btnViewPar.Size = new System.Drawing.Size(107, 29);
+            this.btnViewPar.Size = new System.Drawing.Size(112, 29);
             this.btnViewPar.TabIndex = 4;
-            this.btnViewPar.Text = "View parameters";
+            this.btnViewPar.Text = "View settings";
             this.btnViewPar.UseVisualStyleBackColor = true;
             this.btnViewPar.Click += new System.EventHandler(this.BtnViewPar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Исходный каталог";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Формат файла";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(126, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(330, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Каталог для переноса файлов данного формата";
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
+            // 
             // Transporter
             // 
-            this.ClientSize = new System.Drawing.Size(515, 407);
+            this.ClientSize = new System.Drawing.Size(572, 407);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnViewPar);
             this.Controls.Add(this.btnResPar);
             this.Controls.Add(this.btnClearCon);
@@ -156,6 +191,9 @@
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnAddDiir);
             this.Controls.Add(this.btnStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(590, 454);
+            this.MinimumSize = new System.Drawing.Size(590, 454);
             this.Name = "Transporter";
             this.Text = "Transporter";
             this.Load += new System.EventHandler(this.Transporter_Load);
@@ -178,6 +216,9 @@
         private System.Windows.Forms.Button btnClearCon;
         private System.Windows.Forms.Button btnResPar;
         private System.Windows.Forms.Button btnViewPar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -51,7 +51,7 @@ namespace Transporter
                         foreach (var format in Data.Formats)
                         {
                             var fileInfo = new FileInfo(file);
-                            if (fileInfo.Extension.Contains(format.Key))
+                            if (fileInfo.Extension.ToLower().Contains(format.Key.ToLower()))
                             {
                                 fileInfo.MoveTo(format.Value + @"\" + DateTime.Now.ToString("yyyyMMdd_hhmmss_") + fileInfo.Name);
                             }

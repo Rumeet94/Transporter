@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,23 +16,48 @@ namespace Transporter
             InitializeComponent();
 
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Для начала работы укажите;");
+            builder.AppendLine("Для начала работы укажите:");
             builder.AppendLine("1) исходный каталог - откуда бы Вы хотели перенести файлы;");
-            builder.AppendLine("2) форматы файлов с каталами - куда бы Вы xотели переместить файлы.");
+            builder.AppendLine("2) форматы файлов с каталогами - куда бы Вы xотели переместить файлы.");
+            builder.AppendLine();
+            builder.AppendLine("Кнопка 'Start' запускает перенос файлов.");
+            builder.AppendLine("Кнопка 'Stop' останавливает перенос файлов.");
+            builder.AppendLine("Кнопки 'Add' добавлют параметры.");
+            builder.AppendLine("Кнопка 'Reset settings' сбрасывает параметры переноса.");
+            builder.AppendLine("Кнопка 'View settings' выводит текущие параметры в консоль.");
+            builder.AppendLine("Кнопка 'Clear console' очищает консоль.");
+            builder.AppendLine();
+            builder.AppendLine("Автор программы: Rumeet94 (https://vk.com/evgengorb)");
 
             tbMessage.Text = builder.ToString();
         }
 
         private void BtnAddDiir_Click(object sender, System.EventArgs e)
         {
+            if (Regex.IsMatch(tbDir.Text, @"^.:\w*", RegexOptions.IgnoreCase))
+            {
                 Data.Path = tbDir.Text;
                 btnAddDiir.Text = "Edit";
+                tbMessage.Text = "Путь исходного каталога успешно добавлен";
+            }
+            else
+            {
+                tbMessage.Text = "Путь исходного каталога указан некорректно";
+            }
         }
 
         private void BtnAddFormatAndDir_Click(object sender, System.EventArgs e)
         {
-            Handler.AddFormat(tbFormat.Text, tbFormatDir.Text);
-            
+            if (Regex.IsMatch(tbFormatDir.Text, @"^.:\w*", RegexOptions.IgnoreCase) && !tbFormat.Text.Equals(""))
+            {
+                Handler.AddFormat(tbFormat.Text, tbFormatDir.Text);
+                tbMessage.Text = "Формат и путь каталога для переноса файлов успешно добавлены";
+            }
+            else
+            {
+                tbMessage.Text = "Не указан формат или путь каталога для переноса файлов указан некорректно";
+            }
+
         }
 
         private void Transporter_Load(object sender, System.EventArgs e)
@@ -56,19 +82,26 @@ namespace Transporter
 
         private void BtnStart_Click(object sender, System.EventArgs e)
         {
-            tbDir.ReadOnly = true;
-            tbFormat.ReadOnly = true;
-            tbFormatDir.ReadOnly = true;
+            if (Data.Path != null && Data.Formats.Count > 0) {
+                tbDir.ReadOnly = true;
+                tbFormat.ReadOnly = true;
+                tbFormatDir.ReadOnly = true;
 
-            btnStart.Enabled = false;
-            btnAddDiir.Enabled = false;
-            btnAddFormatAndDir.Enabled = false;
-            btnResPar.Enabled = false;
-            
-            cancellationTokenSource = new CancellationTokenSource();
+                btnStart.Enabled = false;
+                btnAddDiir.Enabled = false;
+                btnAddFormatAndDir.Enabled = false;
+                btnResPar.Enabled = false;
 
-            tbMessage.Text = "Выполняется перенос файлов";
-            Task.Run(() => Handler.MoveFiles(cancellationTokenSource.Token));
+                cancellationTokenSource = new CancellationTokenSource();
+
+                tbMessage.Text = "Выполняется перенос файлов";
+                Task.Run(() => Handler.MoveFiles(cancellationTokenSource.Token));
+            }
+            else
+            {
+                tbMessage.Text = "Невозможно запустить перенос файлов, т.к. исходный каталог " +
+                    "или форматы и каталогы для переноса файлов не указаны";
+            }
         }
 
         private void TbDir_TextChanged(object sender, System.EventArgs e)
@@ -89,6 +122,16 @@ namespace Transporter
         private void BtnClearCon_Click(object sender, System.EventArgs e)
         {
             tbMessage.Text = "";
+        }
+
+        private void Label3_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void TbFormatDir_TextChanged(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
