@@ -9,29 +9,36 @@ namespace Transporter
 {
     class Handler
     {
-        public static void AddFormat(string format,string path)
+        private Data data = new Data();
+        public void AddFormat(string format,string path)
         {
-            Data.Add(format, path);
+            data.Add(format, path);
         }
 
-        public static void DelAllFormats(Dictionary<string, string> formats)
+        public void AddPath(string path)
         {
-            formats.Clear();
+            data.Path = path;
         }
 
-        public static string GetParameters()
+        public void DelAllFormats()
+        {
+            data.Formats.Clear();
+            data.RemoveSettingsFile();
+        }
+
+        public string GetParameters()
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("Исходный каталог:");
-            builder.AppendLine(Data.Path == null ? "исходный каталог не указан" : Data.Path);
+            builder.AppendLine(data.Path == null ? "исходный каталог не указан" : data.Path);
             builder.AppendLine();
 
             builder.AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
-            if (Data.Formats.Count == 0)
+            if (data.Formats.Count == 0)
                 builder.AppendLine("Форматы файлов и каталоги не указаны");
             else
             {
-                foreach (var format in Data.Formats)
+                foreach (var format in data.Formats)
                 {
                     builder.AppendLine(string.Format("{0} => {1}", format.Key, format.Value));
                 }
@@ -39,16 +46,16 @@ namespace Transporter
             return builder.ToString();
         }
 
-        public static void MoveFiles(CancellationToken token)
+        public void MoveFiles(CancellationToken token)
         {
             while (!token.IsCancellationRequested)
             {
                 try
                 {
-                    var files = Directory.GetFiles(Data.Path);
+                    var files = Directory.GetFiles(data.Path);
                     foreach (string file in files)
                     {
-                        foreach (var format in Data.Formats)
+                        foreach (var format in data.Formats)
                         {
                             var fileInfo = new FileInfo(file);
                             if (fileInfo.Extension.ToLower().Contains(format.Key.ToLower()))
@@ -62,6 +69,16 @@ namespace Transporter
                 catch (IOException) { }
                 catch (KeyNotFoundException) { }
             }
+        }
+
+        public void SaveSetting()
+        {
+            data.Save();
+        }
+
+        public bool checkParametrsForStart()
+        {
+            return data.Path != null && data.Formats.Count > 0;
         }
     }
 }

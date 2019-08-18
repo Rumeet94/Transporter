@@ -9,6 +9,7 @@ namespace Transporter
     
     public partial class Transporter : Form
     {
+        private Handler handler = new Handler();
         private CancellationTokenSource cancellationTokenSource;
 
         public Transporter()
@@ -23,9 +24,10 @@ namespace Transporter
             builder.AppendLine("Кнопка 'Start' запускает перенос файлов.");
             builder.AppendLine("Кнопка 'Stop' останавливает перенос файлов.");
             builder.AppendLine("Кнопки 'Add' добавлют параметры.");
-            builder.AppendLine("Кнопка 'Reset settings' сбрасывает параметры переноса.");
-            builder.AppendLine("Кнопка 'View settings' выводит текущие параметры в консоль.");
-            builder.AppendLine("Кнопка 'Clear console' очищает консоль.");
+            builder.AppendLine("Кнопка 'Reset' сбрасывает параметры переноса.");
+            builder.AppendLine("Кнопка 'View' выводит текущие параметры в консоль.");
+            builder.AppendLine("Кнопка 'Clear' очищает консоль.");
+            builder.AppendLine("Кнопка 'Save' сохраняет текущие параметры.");
             builder.AppendLine();
             builder.AppendLine("Автор программы: Rumeet94 (https://vk.com/evgengorb)");
 
@@ -36,8 +38,7 @@ namespace Transporter
         {
             if (Regex.IsMatch(tbDir.Text, @"^.:\w*", RegexOptions.IgnoreCase))
             {
-                Data.Path = tbDir.Text;
-                btnAddDiir.Text = "Edit";
+                handler.AddPath(tbDir.Text);
                 tbMessage.Text = "Путь исходного каталога успешно добавлен";
             }
             else
@@ -50,7 +51,7 @@ namespace Transporter
         {
             if (Regex.IsMatch(tbFormatDir.Text, @"^.:\w*", RegexOptions.IgnoreCase) && !tbFormat.Text.Equals(""))
             {
-                Handler.AddFormat(tbFormat.Text, tbFormatDir.Text);
+                handler.AddFormat(tbFormat.Text, tbFormatDir.Text);
                 tbMessage.Text = "Формат и путь каталога для переноса файлов успешно добавлены";
             }
             else
@@ -82,7 +83,7 @@ namespace Transporter
 
         private void BtnStart_Click(object sender, System.EventArgs e)
         {
-            if (Data.Path != null && Data.Formats.Count > 0) {
+            if (handler.checkParametrsForStart()) {
                 tbDir.ReadOnly = true;
                 tbFormat.ReadOnly = true;
                 tbFormatDir.ReadOnly = true;
@@ -95,12 +96,12 @@ namespace Transporter
                 cancellationTokenSource = new CancellationTokenSource();
 
                 tbMessage.Text = "Выполняется перенос файлов";
-                Task.Run(() => Handler.MoveFiles(cancellationTokenSource.Token));
+                Task.Run(() => handler.MoveFiles(cancellationTokenSource.Token));
             }
             else
             {
                 tbMessage.Text = "Невозможно запустить перенос файлов, т.к. исходный каталог " +
-                    "или форматы и каталогы для переноса файлов не указаны";
+                    "или форматы и каталоги для переноса файлов не указаны";
             }
         }
 
@@ -111,12 +112,12 @@ namespace Transporter
 
         private void BtnViewPar_Click(object sender, System.EventArgs e)
         {
-            tbMessage.Text = Handler.GetParameters();
+            tbMessage.Text = handler.GetParameters();
         }
 
         private void BtnResPar_Click(object sender, System.EventArgs e)
         {
-            Handler.DelAllFormats(Data.Formats);
+            handler.DelAllFormats();
         }
 
         private void BtnClearCon_Click(object sender, System.EventArgs e)
@@ -132,6 +133,11 @@ namespace Transporter
         private void TbFormatDir_TextChanged(object sender, System.EventArgs e)
         {
 
+        }
+
+        private void BtnSave_Click(object sender, System.EventArgs e)
+        {
+            handler.SaveSetting();
         }
     }
 }

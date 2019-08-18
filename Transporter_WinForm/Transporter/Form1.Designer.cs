@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -118,31 +119,31 @@
             // 
             // btnClearCon
             // 
-            this.btnClearCon.Location = new System.Drawing.Point(448, 372);
+            this.btnClearCon.Location = new System.Drawing.Point(242, 372);
             this.btnClearCon.Name = "btnClearCon";
-            this.btnClearCon.Size = new System.Drawing.Size(112, 29);
+            this.btnClearCon.Size = new System.Drawing.Size(75, 29);
             this.btnClearCon.TabIndex = 4;
-            this.btnClearCon.Text = "Clear console";
+            this.btnClearCon.Text = "Clear";
             this.btnClearCon.UseVisualStyleBackColor = true;
             this.btnClearCon.Click += new System.EventHandler(this.BtnClearCon_Click);
             // 
             // btnResPar
             // 
-            this.btnResPar.Location = new System.Drawing.Point(209, 372);
+            this.btnResPar.Location = new System.Drawing.Point(323, 372);
             this.btnResPar.Name = "btnResPar";
-            this.btnResPar.Size = new System.Drawing.Size(115, 29);
+            this.btnResPar.Size = new System.Drawing.Size(75, 29);
             this.btnResPar.TabIndex = 4;
-            this.btnResPar.Text = "Reset settings";
+            this.btnResPar.Text = "Reset";
             this.btnResPar.UseVisualStyleBackColor = true;
             this.btnResPar.Click += new System.EventHandler(this.BtnResPar_Click);
             // 
             // btnViewPar
             // 
-            this.btnViewPar.Location = new System.Drawing.Point(330, 372);
+            this.btnViewPar.Location = new System.Drawing.Point(404, 372);
             this.btnViewPar.Name = "btnViewPar";
-            this.btnViewPar.Size = new System.Drawing.Size(112, 29);
+            this.btnViewPar.Size = new System.Drawing.Size(75, 29);
             this.btnViewPar.TabIndex = 4;
-            this.btnViewPar.Text = "View settings";
+            this.btnViewPar.Text = "View";
             this.btnViewPar.UseVisualStyleBackColor = true;
             this.btnViewPar.Click += new System.EventHandler(this.BtnViewPar_Click);
             // 
@@ -174,9 +175,20 @@
             this.label3.Text = "Каталог для переноса файлов данного формата";
             this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(485, 372);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 29);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // Transporter
             // 
             this.ClientSize = new System.Drawing.Size(572, 407);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -219,6 +231,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 
