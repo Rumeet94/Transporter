@@ -41,7 +41,9 @@ namespace Transporter
         public void Add(string format, string path)
         {
             if (!formats.ContainsKey(format))
+            {
                 formats.Add(format, path);
+            }
             else
             {
                 formats.Remove(format);
@@ -53,7 +55,10 @@ namespace Transporter
         {
             string fileName = settingsFile;
 
-            if (File.Exists(fileName)) File.Delete(fileName);
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
 
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
@@ -63,17 +68,19 @@ namespace Transporter
                  formats.Select(x => new XElement("item", new XAttribute("format", x.Key), new XAttribute("path", x.Value)))
                 );
                 xElem.Save(fileStream);
-                fileStream.Close();
             }
         }
 
         public void RemoveSettingsFile()
         {
-            if (File.Exists(settingsFile)) File.Delete(settingsFile);
+            if (File.Exists(settingsFile))
+            {
+                File.Delete(settingsFile);
+            }
         }
     }
 
-    public class item
+    public class Item
     {
         [XmlAttribute]
         public string path;

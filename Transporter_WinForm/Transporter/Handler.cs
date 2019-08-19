@@ -9,7 +9,7 @@ namespace Transporter
 {
     class Handler
     {
-        private Data data = new Data();
+        private readonly Data data = new Data();
         public void AddFormat(string format,string path)
         {
             data.Add(format, path);
@@ -35,7 +35,9 @@ namespace Transporter
 
             builder.AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
             if (data.Formats.Count == 0)
+            {
                 builder.AppendLine("Форматы файлов и каталоги не указаны");
+            }
             else
             {
                 foreach (var format in data.Formats)

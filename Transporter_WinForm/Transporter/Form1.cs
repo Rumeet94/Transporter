@@ -9,7 +9,7 @@ namespace Transporter
     
     public partial class Transporter : Form
     {
-        private Handler handler = new Handler();
+        private readonly Handler handler = new Handler();
         private CancellationTokenSource cancellationTokenSource;
 
         public Transporter()
@@ -36,7 +36,7 @@ namespace Transporter
 
         private void BtnAddDiir_Click(object sender, System.EventArgs e)
         {
-            if (Regex.IsMatch(tbDir.Text, @"^.:\w*", RegexOptions.IgnoreCase))
+            if (IsDirectoryNameValid(tbDir.Text))
             {
                 handler.AddPath(tbDir.Text);
                 tbMessage.Text = "Путь исходного каталога успешно добавлен";
@@ -49,7 +49,7 @@ namespace Transporter
 
         private void BtnAddFormatAndDir_Click(object sender, System.EventArgs e)
         {
-            if (Regex.IsMatch(tbFormatDir.Text, @"^.:\w*", RegexOptions.IgnoreCase) && !tbFormat.Text.Equals(""))
+            if (IsDirectoryNameValid(tbFormat.Text, tbFormatDir.Text))
             {
                 handler.AddFormat(tbFormat.Text, tbFormatDir.Text);
                 tbMessage.Text = "Формат и путь каталога для переноса файлов успешно добавлены";
@@ -58,36 +58,23 @@ namespace Transporter
             {
                 tbMessage.Text = "Не указан формат или путь каталога для переноса файлов указан некорректно";
             }
-
         }
-
 
         private void BtnStop_Click(object sender, System.EventArgs e)
         {
             tbMessage.Text = "Перенос файлов остановлен.";
             cancellationTokenSource?.Cancel();
-            
-            tbDir.ReadOnly = false;
-            tbFormat.ReadOnly = false;
-            tbFormatDir.ReadOnly = false;
 
-            btnStart.Enabled = true;
-            btnAddDiir.Enabled = true;
-            btnAddFormatAndDir.Enabled = true;
-            btnResPar.Enabled = true;
+            SetTexBoxReadOnly(false);
+            SetButtonEnabled(true);
         }
 
         private void BtnStart_Click(object sender, System.EventArgs e)
         {
-            if (handler.checkParametrsForStart()) {
-                tbDir.ReadOnly = true;
-                tbFormat.ReadOnly = true;
-                tbFormatDir.ReadOnly = true;
-
-                btnStart.Enabled = false;
-                btnAddDiir.Enabled = false;
-                btnAddFormatAndDir.Enabled = false;
-                btnResPar.Enabled = false;
+            if (handler.checkParametrsForStart())
+            {
+                SetTexBoxReadOnly(true);
+                SetButtonEnabled(false);
 
                 cancellationTokenSource = new CancellationTokenSource();
 
@@ -119,6 +106,31 @@ namespace Transporter
         private void BtnSave_Click(object sender, System.EventArgs e)
         {
             handler.SaveSetting();
+        }
+
+        private bool IsDirectoryNameValid(string path)
+        {
+            return Regex.IsMatch(path, @"^.:\w*", RegexOptions.IgnoreCase);
+        }
+
+        private bool IsDirectoryNameValid(string format, string path)
+        {
+            return Regex.IsMatch(path, @"^.:\w*", RegexOptions.IgnoreCase) && !format.Equals("");
+        }
+
+        private void SetTexBoxReadOnly(bool readOnly)
+        {
+            tbDir.ReadOnly = readOnly;
+            tbFormat.ReadOnly = readOnly;
+            tbFormatDir.ReadOnly = readOnly;
+        }
+
+        private void SetButtonEnabled(bool enabled)
+        {
+            btnStart.Enabled = enabled;
+            btnAddDiir.Enabled = enabled;
+            btnAddFormatAndDir.Enabled = enabled;
+            btnResPar.Enabled = enabled;
         }
     }
 }
