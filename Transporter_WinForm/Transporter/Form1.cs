@@ -61,10 +61,6 @@ namespace Transporter
 
         }
 
-        private void Transporter_Load(object sender, System.EventArgs e)
-        {
-
-        }
 
         private void BtnStop_Click(object sender, System.EventArgs e)
         {
@@ -105,11 +101,6 @@ namespace Transporter
             }
         }
 
-        private void TbDir_TextChanged(object sender, System.EventArgs e)
-        {
-
-        }
-
         private void BtnViewPar_Click(object sender, System.EventArgs e)
         {
             tbMessage.Text = handler.GetParameters();
@@ -123,16 +114,6 @@ namespace Transporter
         private void BtnClearCon_Click(object sender, System.EventArgs e)
         {
             tbMessage.Text = "";
-        }
-
-        private void Label3_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void TbFormatDir_TextChanged(object sender, System.EventArgs e)
-        {
-
         }
 
         private void BtnSave_Click(object sender, System.EventArgs e)

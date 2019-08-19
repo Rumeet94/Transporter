@@ -91,7 +91,6 @@
             this.tbDir.Name = "tbDir";
             this.tbDir.Size = new System.Drawing.Size(467, 22);
             this.tbDir.TabIndex = 1;
-            this.tbDir.TextChanged += new System.EventHandler(this.TbDir_TextChanged);
             // 
             // tbFormat
             // 
@@ -106,7 +105,6 @@
             this.tbFormatDir.Name = "tbFormatDir";
             this.tbFormatDir.Size = new System.Drawing.Size(353, 22);
             this.tbFormatDir.TabIndex = 1;
-            this.tbFormatDir.TextChanged += new System.EventHandler(this.TbFormatDir_TextChanged);
             // 
             // tbMessage
             // 
@@ -173,7 +171,6 @@
             this.label3.Size = new System.Drawing.Size(330, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Каталог для переноса файлов данного формата";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // btnSave
             // 
@@ -208,7 +205,6 @@
             this.MinimumSize = new System.Drawing.Size(590, 454);
             this.Name = "Transporter";
             this.Text = "Transporter";
-            this.Load += new System.EventHandler(this.Transporter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
