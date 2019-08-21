@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Transporter.Properties
+namespace Rumeet94_Transporter.Properties
 {
 
 

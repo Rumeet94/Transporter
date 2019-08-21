@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace Transporter
+namespace Rumeet94_Transporter
 {
     class Handler
     {
         private readonly Data data = new Data();
+        private const int WaitTimeBetweenTransfers = 5000;
+
         public void AddFormat(string format,string path)
         {
             data.Add(format, path);
@@ -28,12 +30,10 @@ namespace Transporter
 
         public string GetParameters()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Исходный каталог:");
-            builder.AppendLine(data.Path == null ? "исходный каталог не указан" : data.Path);
-            builder.AppendLine();
-
-            builder.AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
+            var builder = new StringBuilder().AppendLine("Исходный каталог:")
+                                             .AppendLine(data.Path ?? "исходный каталог не указан")
+                                             .AppendLine()
+                                             .AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
             if (data.Formats.Count == 0)
             {
                 builder.AppendLine("Форматы файлов и каталоги не указаны");
@@ -42,7 +42,7 @@ namespace Transporter
             {
                 foreach (var format in data.Formats)
                 {
-                    builder.AppendLine(string.Format("{0} => {1}", format.Key, format.Value));
+                    builder.Append(format.Key).Append(" => ").AppendLine(format.Value);
                 }
             }
             return builder.ToString();
@@ -66,7 +66,7 @@ namespace Transporter
                             }
                         }
                     }
-                    Thread.Sleep(5000);
+                    Thread.Sleep(WaitTimeBetweenTransfers);
                 }
                 catch (IOException) { }
                 catch (KeyNotFoundException) { }

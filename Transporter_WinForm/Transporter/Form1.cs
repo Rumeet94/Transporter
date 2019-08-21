@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Transporter
+namespace Rumeet94_Transporter
 {
     
     public partial class Transporter : Form
@@ -15,23 +15,7 @@ namespace Transporter
         public Transporter()
         {
             InitializeComponent();
-
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Для начала работы укажите:");
-            builder.AppendLine("1) исходный каталог - откуда бы Вы хотели перенести файлы;");
-            builder.AppendLine("2) форматы файлов с каталогами - куда бы Вы xотели переместить файлы.");
-            builder.AppendLine();
-            builder.AppendLine("Кнопка 'Start' запускает перенос файлов.");
-            builder.AppendLine("Кнопка 'Stop' останавливает перенос файлов.");
-            builder.AppendLine("Кнопки 'Add' добавлют параметры.");
-            builder.AppendLine("Кнопка 'Reset' сбрасывает параметры переноса.");
-            builder.AppendLine("Кнопка 'View' выводит текущие параметры в консоль.");
-            builder.AppendLine("Кнопка 'Clear' очищает консоль.");
-            builder.AppendLine("Кнопка 'Save' сохраняет текущие параметры.");
-            builder.AppendLine();
-            builder.AppendLine("Автор программы: Rumeet94 (https://vk.com/evgengorb)");
-
-            tbMessage.Text = builder.ToString();
+            tbMessage.Text = GetAboutStr();
         }
 
         private void BtnAddDiir_Click(object sender, System.EventArgs e)
@@ -79,7 +63,7 @@ namespace Transporter
                 cancellationTokenSource = new CancellationTokenSource();
 
                 tbMessage.Text = "Выполняется перенос файлов";
-                Task.Run(() => handler.MoveFiles(cancellationTokenSource.Token));
+                Task.Factory.StartNew(() => handler.MoveFiles(cancellationTokenSource.Token), TaskCreationOptions.LongRunning);
             }
             else
             {
@@ -131,6 +115,21 @@ namespace Transporter
             btnAddDiir.Enabled = enabled;
             btnAddFormatAndDir.Enabled = enabled;
             btnResPar.Enabled = enabled;
+        }
+
+        private static string GetAboutStr()
+        {
+            return "Для начала работы укажите:" + "\r\n" +
+                    "1) исходный каталог - откуда бы Вы хотели перенести файлы" + "\r\n" +
+                    "2) форматы файлов с каталогами - куда бы Вы xотели переместить файлы." + "\r\n" + "\r\n" +
+                    "Кнопка 'Start' запускает перенос файлов." + "\r\n" +
+                    "Кнопка 'Stop' останавливает перенос файлов." + "\r\n" +
+                    "Кнопки 'Add' добавлют параметры." + "\r\n" +
+                    "Кнопка 'Reset' сбрасывает параметры переноса." + "\r\n" +
+                    "Кнопка 'View' выводит текущие параметры в консоль." + "\r\n" +
+                    "Кнопка 'Clear' очищает консоль." + "\r\n" +
+                    "Кнопка 'Save' сохраняет текущие параметры." + "\r\n" + "\r\n" +
+                    "Автор программы: Rumeet94 (https://vk.com/evgengorb)" + "\r\n";
         }
     }
 }

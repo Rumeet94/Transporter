@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Transporter
+namespace Rumeet94_Transporter
 {
     public class Data
     {
@@ -12,19 +12,19 @@ namespace Transporter
         {
             string fileName = settingsFile;
 
-            if (File.Exists(fileName) && !File.ReadAllText(fileName).Equals("") && File.ReadAllText(fileName) != null)
+            try
             {
-                    XElement xElem2 = XElement.Load(fileName);
-                    formats =  xElem2.Descendants("item")
-                                        .ToDictionary(x => (string)x.Attribute("format"), x => (string)x.Attribute("path"));   
+                XElement xElem2 = XElement.Load(fileName);
+                formats = xElem2.Descendants("item")
+                                .ToDictionary(x => (string)x.Attribute("format"), x => (string)x.Attribute("path"));
             }
-            else
+            catch(FileNotFoundException)
             {
                 formats = new Dictionary<string, string>();
-            } 
+            }
         }
 
-        private static string settingsFile = "settings.xml";
+        private const string settingsFile = "settings.xml";
 
         private readonly Dictionary<string, string> formats;
         public Dictionary<string, string> Formats
@@ -46,8 +46,7 @@ namespace Transporter
             }
             else
             {
-                formats.Remove(format);
-                formats.Add(format, path);
+                formats[format] = path;
             }
         }
         
@@ -55,19 +54,21 @@ namespace Transporter
         {
             string fileName = settingsFile;
 
-            if (File.Exists(fileName))
+            try
             {
-                File.Delete(fileName);
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+                {
+                    XElement xElem = new XElement
+                    (
+                     "items",
+                     formats.Select(x => new XElement("item", new XAttribute("format", x.Key), new XAttribute("path", x.Value)))
+                    );
+                    xElem.Save(fileStream);
+                }
             }
-
-            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+            catch
             {
-                XElement xElem = new XElement
-                (
-                 "items",
-                 formats.Select(x => new XElement("item", new XAttribute("format", x.Key), new XAttribute("path", x.Value)))
-                );
-                xElem.Save(fileStream);
+
             }
         }
 
@@ -82,10 +83,7 @@ namespace Transporter
 
     public class Item
     {
-        [XmlAttribute]
         public string path;
-        [XmlAttribute]
         public string format;
     }
-
 }
