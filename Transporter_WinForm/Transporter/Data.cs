@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -19,6 +21,10 @@ namespace Rumeet94_Transporter
                                 .ToDictionary(x => (string)x.Attribute("format"), x => (string)x.Attribute("path"));
             }
             catch(FileNotFoundException)
+            {
+                formats = new Dictionary<string, string>();
+            }
+            catch (UnauthorizedAccessException)
             {
                 formats = new Dictionary<string, string>();
             }
@@ -78,6 +84,32 @@ namespace Rumeet94_Transporter
             {
                 File.Delete(settingsFile);
             }
+        }
+
+        public string GetAllFormatsToStr()
+        {
+            var builder = new StringBuilder().AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
+
+            if (formats.Count == 0)
+            {
+                builder.AppendLine("Форматы файлов и каталоги не указаны");
+            }
+            else
+            {
+                foreach (var format in formats)
+                {
+                    builder.Append(format.Key).Append(" => ").AppendLine(format.Value);
+                }
+            }
+
+            return builder.ToString();
+        }
+
+        public string GetPathToStr()
+        {
+            var builder = new StringBuilder().AppendLine("Исходный каталог:")
+                                             .AppendLine(path ?? "исходный каталог не указан");
+            return builder.ToString();                                 
         }
     }
 

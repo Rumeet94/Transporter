@@ -28,3 +28,13 @@ C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.
 C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.exe
 C:\GIT\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.pdb
 C:\0.IT\DEV\Transporter_WinForm\Transporter\obj\Debug\Rumeet94_Transporter.Transporter.resources
+C:\DEV\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe.config
+C:\DEV\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.exe
+C:\DEV\Transporter\Transporter_WinForm\Transporter\bin\Debug\Transporter.pdb
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csprojAssemblyReference.cache
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Rumeet94_Transporter.Transporter.resources
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.Properties.Resources.resources
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.GenerateResource.cache
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.csproj.CoreCompileInputs.cache
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.exe
+C:\DEV\Transporter\Transporter_WinForm\Transporter\obj\Debug\Transporter.pdb

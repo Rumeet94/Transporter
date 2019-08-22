@@ -30,22 +30,7 @@ namespace Rumeet94_Transporter
 
         public string GetParameters()
         {
-            var builder = new StringBuilder().AppendLine("Исходный каталог:")
-                                             .AppendLine(data.Path ?? "исходный каталог не указан")
-                                             .AppendLine()
-                                             .AppendLine("Форматы файлов и каталоги, куда файлы будут перенесены:");
-            if (data.Formats.Count == 0)
-            {
-                builder.AppendLine("Форматы файлов и каталоги не указаны");
-            }
-            else
-            {
-                foreach (var format in data.Formats)
-                {
-                    builder.Append(format.Key).Append(" => ").AppendLine(format.Value);
-                }
-            }
-            return builder.ToString();
+            return data.GetPathToStr() + "\r\n" + data.GetAllFormatsToStr();
         }
 
         public void MoveFiles(CancellationToken token)
