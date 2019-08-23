@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transporter));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnAddDiir = new System.Windows.Forms.Button();
@@ -43,6 +45,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -89,21 +96,21 @@
             // 
             this.tbDir.Location = new System.Drawing.Point(12, 37);
             this.tbDir.Name = "tbDir";
-            this.tbDir.Size = new System.Drawing.Size(467, 22);
+            this.tbDir.Size = new System.Drawing.Size(467, 20);
             this.tbDir.TabIndex = 1;
             // 
             // tbFormat
             // 
             this.tbFormat.Location = new System.Drawing.Point(12, 93);
             this.tbFormat.Name = "tbFormat";
-            this.tbFormat.Size = new System.Drawing.Size(108, 22);
+            this.tbFormat.Size = new System.Drawing.Size(108, 20);
             this.tbFormat.TabIndex = 1;
             // 
             // tbFormatDir
             // 
             this.tbFormatDir.Location = new System.Drawing.Point(126, 93);
             this.tbFormatDir.Name = "tbFormatDir";
-            this.tbFormatDir.Size = new System.Drawing.Size(353, 22);
+            this.tbFormatDir.Size = new System.Drawing.Size(353, 20);
             this.tbFormatDir.TabIndex = 1;
             // 
             // tbMessage
@@ -127,7 +134,7 @@
             // 
             // btnResPar
             // 
-            this.btnResPar.Location = new System.Drawing.Point(323, 372);
+            this.btnResPar.Location = new System.Drawing.Point(404, 372);
             this.btnResPar.Name = "btnResPar";
             this.btnResPar.Size = new System.Drawing.Size(75, 29);
             this.btnResPar.TabIndex = 4;
@@ -137,7 +144,7 @@
             // 
             // btnViewPar
             // 
-            this.btnViewPar.Location = new System.Drawing.Point(404, 372);
+            this.btnViewPar.Location = new System.Drawing.Point(323, 372);
             this.btnViewPar.Name = "btnViewPar";
             this.btnViewPar.Size = new System.Drawing.Size(75, 29);
             this.btnViewPar.TabIndex = 4;
@@ -150,7 +157,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Исходный каталог";
             // 
@@ -159,7 +166,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 17);
+            this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Формат файла";
             // 
@@ -168,7 +175,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(126, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(330, 17);
+            this.label3.Size = new System.Drawing.Size(253, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Каталог для переноса файлов данного формата";
             // 
@@ -182,9 +189,40 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Transporter";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClicks);
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClicks);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemStart,
+            this.toolStripMenuItemStop});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(99, 48);
+            // 
+            // toolStripMenuItemStart
+            // 
+            this.toolStripMenuItemStart.Name = "toolStripMenuItemStart";
+            this.toolStripMenuItemStart.Size = new System.Drawing.Size(98, 22);
+            this.toolStripMenuItemStart.Text = "Start";
+            this.toolStripMenuItemStart.Click += new System.EventHandler(this.ToolStripMenuItemStart_Click);
+            // 
+            // toolStripMenuItemStop
+            // 
+            this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
+            this.toolStripMenuItemStop.Size = new System.Drawing.Size(98, 22);
+            this.toolStripMenuItemStop.Text = "Stop";
+            this.toolStripMenuItemStop.Click += new System.EventHandler(this.ToolStripMenuItemStop_Click);
+            // 
             // Transporter
             // 
-            this.ClientSize = new System.Drawing.Size(572, 407);
+            this.ClientSize = new System.Drawing.Size(574, 415);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -201,10 +239,12 @@
             this.Controls.Add(this.btnAddDiir);
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(590, 454);
             this.MinimumSize = new System.Drawing.Size(590, 454);
             this.Name = "Transporter";
             this.Text = "Transporter";
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +268,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStart;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStop;
     }
 }
 

@@ -15,6 +15,8 @@ namespace Rumeet94_Transporter
         public Transporter()
         {
             InitializeComponent();
+
+            this.ShowInTaskbar = false;
             tbMessage.Text = GetAboutStr();
         }
 
@@ -130,6 +132,28 @@ namespace Rumeet94_Transporter
                     "Кнопка 'Clear' очищает консоль." + "\r\n" +
                     "Кнопка 'Save' сохраняет текущие параметры." + "\r\n" + "\r\n" +
                     "Автор программы: Rumeet94 (https://vk.com/evgengorb)" + "\r\n";
+        }
+
+        private void NotifyIcon_MouseClicks(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip.Show(Cursor.Position);
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void ToolStripMenuItemStart_Click(object sender, System.EventArgs e)
+        {
+            BtnStart_Click(sender, e);
+        }
+
+        private void ToolStripMenuItemStop_Click(object sender, System.EventArgs e)
+        {
+            BtnStop_Click(sender, e);
         }
     }
 }
