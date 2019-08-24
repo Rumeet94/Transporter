@@ -53,8 +53,14 @@ namespace Rumeet94_Transporter
                     }
                     Thread.Sleep(WaitTimeBetweenTransfers);
                 }
-                catch (IOException) { }
-                catch (KeyNotFoundException) { }
+                catch (IOException e)
+                {
+                    Log.Write(e);
+                }
+                catch (KeyNotFoundException e)
+                {
+                    Log.Write(e);
+                }
             }
         }
 

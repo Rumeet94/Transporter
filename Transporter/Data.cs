@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -12,7 +13,7 @@ namespace Rumeet94_Transporter
     {
         public Data()
         {
-            string fileName = settingsFile;
+            string fileName = SettingsFile;
 
             try
             {
@@ -20,17 +21,25 @@ namespace Rumeet94_Transporter
                 formats = xElem2.Descendants("item")
                                 .ToDictionary(x => (string)x.Attribute("format"), x => (string)x.Attribute("path"));
             }
-            catch(FileNotFoundException)
+            catch(FileNotFoundException e)
             {
                 formats = new Dictionary<string, string>();
+                Log.Write(e);
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException e)
             {
                 formats = new Dictionary<string, string>();
+                Log.Write(e);
             }
+            catch (XmlException e)
+            {
+                formats = new Dictionary<string, string>();
+                Log.Write(e);
+            }
+            
         }
 
-        private const string settingsFile = "settings.xml";
+        private const string SettingsFile = "settings.xml";
 
         private readonly Dictionary<string, string> formats;
         public Dictionary<string, string> Formats
@@ -58,8 +67,7 @@ namespace Rumeet94_Transporter
         
         public void Save()
         {
-            string fileName = settingsFile;
-
+            string fileName = SettingsFile;
             try
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
@@ -72,17 +80,17 @@ namespace Rumeet94_Transporter
                     xElem.Save(fileStream);
                 }
             }
-            catch
+            catch(Exception e)
             {
-
+                Log.Write(e);
             }
         }
 
         public void RemoveSettingsFile()
         {
-            if (File.Exists(settingsFile))
+            if (File.Exists(SettingsFile))
             {
-                File.Delete(settingsFile);
+                File.Delete(SettingsFile);
             }
         }
 

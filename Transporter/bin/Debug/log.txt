@@ -1,0 +1,7 @@
+[24.08.2019 00:25:27.970] [System.Xml.XmlTextReaderImpl.Throw()] ΠΡ‚ΡΡƒΡ‚ΡΡ‚Π²ΡƒΠµΡ‚ ΠΊΠΎΡ€Π½ΠµΠ²ΠΎΠΉ ΡΠ»ΠµΠΌΠµΠ½Ρ‚.
+[24.08.2019 00:26:16.190] [System.Xml.XmlTextReaderImpl.Throw()] ΠΡ‚ΡΡƒΡ‚ΡΡ‚Π²ΡƒΠµΡ‚ ΠΊΠΎΡ€Π½ΠµΠ²ΠΎΠΉ ΡΠ»ΠµΠΌΠµΠ½Ρ‚.
+[24.08.2019 00:28:38.140] [System.IO.__Error.WinIOError()] Π¤Π°ΠΉΠ» 'C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\settings.xml' Π½Πµ Π½Π°ΠΉΠ΄ΠµΠ½.
+[24.08.2019 00:30:14.656] [System.IO.__Error.WinIOError()] Τΰιλ 'C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\settings.xml' νε νΰιδεν.
+[24.08.2019 00:30:53.245] [System.IO.__Error.WinIOError()] Τΰιλ 'C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\settings.xml' νε νΰιδεν.
+[24.08.2019 00:32:36.592] [System.IO.__Error.WinIOError()] Τΰιλ 'C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\settings.xml' νε νΰιδεν.
+[24.08.2019 00:33:07.867] [System.IO.__Error.WinIOError()] Τΰιλ 'C:\0.IT\DEV\Transporter_WinForm\Transporter\bin\Debug\settings.xml' νε νΰιδεν.
